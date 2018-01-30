@@ -2,10 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CarrouselView"
-             x:Class="CarrouselView.MainPage">
+             x:Class="CarrouselView.MainPage"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <controls:CarouselViewControl Orientation="Horizontal" InterPageSpacing="10"
+                                  ItemsSource="{Binding Modelos}" ShowIndicators="True" AnimateTransition="True"
+                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <controls:CarouselViewControl.ItemTemplate>
+            <DataTemplate>
+                <StackLayout BackgroundColor="{Binding CorDeFundo}" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="{Binding Texto}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" />
+                    <Button Text="Teste Botao" IsVisible="{Binding TemBotao}"></Button>
+                </StackLayout>
+            </DataTemplate>
+        </controls:CarouselViewControl.ItemTemplate>
+    </controls:CarouselViewControl>
 
 </ContentPage>
